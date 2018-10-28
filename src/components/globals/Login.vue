@@ -71,8 +71,6 @@ export default {
                 this.$store.commit('setUser', response.user)
                 this.$store.commit('setToken', response.token)
 
-                this.getPayments(response.token)
-
                 this.clean()
 
                 if(this.nextRoute) {
@@ -82,16 +80,6 @@ export default {
             .catch((error) => {
                 this.error = true
                 this.errorMessage = error
-            })
-        },
-
-        getPayments(token) {
-            ws.request('get', '/user/payments', null, token)
-            .then((response) => {
-                this.$store.commit('setPayments', response)
-            })
-            .catch((error) => {
-                console.log(error)
             })
         },
 
