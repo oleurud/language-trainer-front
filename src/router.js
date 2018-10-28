@@ -6,14 +6,16 @@ import store from '@/store'
 import Home from '@/components/Home'
 import UserData from '@/components/pages/account/UserData'
 import ChangePassword from '@/components/pages/account/ChangePassword'
+import Courses from '@/components/pages/courses/Courses'
+import Course from '@/components/pages/course/Course'
 
 Vue.use(Router)
 
 function requireAuth(to, from, next) {
-  if(store.state.user && store.state.token) {
-      next()
+  if (store.state.user && store.state.token) {
+    next()
   } else {
-      next('/')
+    next('/')
   }
 }
 
@@ -37,6 +39,18 @@ export default new Router({
       name: 'ChangePassword',
       component: ChangePassword,
       beforeEnter: requireAuth
-    }
+    },
+    {
+      path: '/courses',
+      name: 'Courses',
+      component: Courses,
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/course/:slug',
+      name: 'Course',
+      component: Course,
+      beforeEnter: requireAuth
+    },
   ]
 })
