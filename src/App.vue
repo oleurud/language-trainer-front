@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import mainNav from '@/components/globals/Header'
+import mainNav from '@/components/globals/TheHeader'
 
 export default {
     name: 'app',

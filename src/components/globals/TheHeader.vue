@@ -10,7 +10,7 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" v-if="user">
-                            <router-link class="nav-link" to="/collections">Collections</router-link>
+                            <router-link class="nav-link" to="/courses">Courses</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-if="user">
@@ -48,7 +48,7 @@ import SignUp from './SignUp'
 import router from '@/router'
 
 export default {
-    name: 'header',
+    name: 'TheHeader',
     components: {
         Login,
         SignUp
