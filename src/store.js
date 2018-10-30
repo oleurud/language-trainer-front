@@ -21,6 +21,8 @@ export default new Vuex.Store({
     user: savedUser,
     token: localStorage.getItem('token'),
     nextRoute: '/courses',
+    courses: savedCourses,
+    topics: savedTopics
   },
   mutations: {
     setUser(state, user) {
@@ -40,7 +42,7 @@ export default new Vuex.Store({
       state.nextRoute = null
       state.courses = null
       state.topics = null
-      localStorage.clear( )
+      localStorage.clear()
     },
     setNextRoute(state, nextRoute) {
       state.nextRoute = nextRoute
