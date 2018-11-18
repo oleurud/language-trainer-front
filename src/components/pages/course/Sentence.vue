@@ -1,8 +1,13 @@
 <template>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{sentence}}</h5>
-            <a href="#" class="btn btn-primary" @click="speak">Listen</a>
+            <div class="card-header">
+                <p v-if="mustShow" class="card-title">{{sentence}}</p>
+                <button class="btn btn-success" v-else @click="show">Show</button>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary" @click="speak">Listen</button>
+            </div>
         </div>
     </div>
 </template>
@@ -13,7 +18,8 @@ export default {
     name: 'courseContent',
     data() {
         return {
-            synth: window.speechSynthesis
+            synth: window.speechSynthesis,
+            showText: false
         }
     },
     props: {
@@ -34,6 +40,13 @@ export default {
         getVoice() {
             const voices = this.synth.getVoices()
             return voices.find(v => v.lang == this.lang)
+        },
+        mustShow() {
+            if(!this.hideText || this.hideText && this.showText) {
+                return true
+            }
+
+            return false;
         }
     },
     methods: {
@@ -45,6 +58,9 @@ export default {
             msg.pitch = 1
 
             this.synth.speak(msg)
+        },
+        show() {
+            this.showText = true
         }
     }
 }
