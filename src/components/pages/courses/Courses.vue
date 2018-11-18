@@ -11,7 +11,7 @@
         <div class="row" v-if="courses && courses.length">
             <div class="col-lg-3" v-for="course in courses" :key="course.slug">
                 <div class="card">
-                    <router-link :to="{ name: 'Course', params: {slug: course.slug}}">
+                    <router-link :to="{ name: 'Course', params: {course: course.slug}}">
                         <img class="card-img-top" src="" alt="">
                         <div class="card-body">
                             <p class="card-text">

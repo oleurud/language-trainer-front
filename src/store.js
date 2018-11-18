@@ -22,7 +22,8 @@ export default new Vuex.Store({
     token: localStorage.getItem('token'),
     nextRoute: '/courses',
     courses: savedCourses,
-    topics: savedTopics
+    topics: savedTopics,
+    sentences: null
   },
   mutations: {
     setUser(state, user) {
@@ -55,6 +56,9 @@ export default new Vuex.Store({
       state.topics = topics
       localStorage.setItem('topics', JSON.stringify(state.topics))
     },
+    setSentences(state, sentences) {
+      state.sentences = sentences
+    }
   },
   actions: {
 

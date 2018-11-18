@@ -3,8 +3,8 @@
         <div class="col-lg-3">
             <CourseMenu active="user"></CourseMenu>
         </div>
-        <div class="col-lg-9">
-            <h4>Course</h4>
+        <div class="col-lg-9" v-if="topic">
+            <CourseContent></CourseContent>
         </div>
     </div>
 </template>
@@ -12,6 +12,7 @@
 <script>
 import ws from '@/services/webservice'
 import CourseMenu from './CourseMenu'
+import CourseContent from './CourseContent'
 
 export default {
     name: 'course',
@@ -21,10 +22,14 @@ export default {
         },
         token() {
             return this.$store.state.token
+        },
+        topic() {
+            return this.$route.params.topic
         }
     },
     components: {
-        CourseMenu
+        CourseMenu,
+        CourseContent
     }
 }
 </script>

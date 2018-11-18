@@ -1,14 +1,10 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            Topics
-        </div>
-        <div class="row" v-if="topics && topics.length">
-            <ul class="list-group list-group-flush" v-for="topic in topics" :key="topic.slug">
-                <router-link to="/account/user">{{topic.name}}</router-link>
-            </ul>
-        </div>
-        <p v-else>Loading topics...</p>
+    <div v-if="topics && topics.length">
+        <ul class="nav flex-column" v-for="topic in topics" :key="topic.slug">
+            <li class="nav-item">
+                <router-link :to="{ name: 'CourseContent', params: {course, topic: topic.slug}}">{{topic.name}}</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -18,7 +14,7 @@ import ws from '@/services/webservice'
 export default {
     name: 'CourseMenu',
     created() {
-        ws.request('get', `/content/${this.$route.params.slug}/topic`, null, this.token)
+        ws.request('get', `/content/${this.$route.params.course}/topic`, null, this.token)
             .then((response) => {
                 this.$store.commit('setTopics', response.topics)
             })
@@ -35,6 +31,9 @@ export default {
         },
         topics() {
             return this.$store.state.topics
+        },
+        course() {
+            return this.$route.params.course
         }
     }
 }

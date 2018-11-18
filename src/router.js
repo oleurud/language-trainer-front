@@ -47,8 +47,14 @@ export default new Router({
       beforeEnter: requireAuth
     },
     {
-      path: '/course/:slug',
+      path: '/course/:course',
       name: 'Course',
+      component: Course,
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/course/:course/topic/:topic',
+      name: 'CourseContent',
       component: Course,
       beforeEnter: requireAuth
     },
