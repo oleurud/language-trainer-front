@@ -33,6 +33,9 @@ export default {
         }
     },
     computed: {
+        sound() {
+            return this.$store.state.settings.sound
+        },
         getVoice() {
             const voices = this.synth.getVoices()
             return voices.find(v => v.lang == "en-US")
@@ -49,13 +52,15 @@ export default {
             this.speak()
         },
         speak() {
-            const msg = new SpeechSynthesisUtterance(this.sentence.translation)
+            if(this.sound) {
+                const msg = new SpeechSynthesisUtterance(this.sentence.translation)
 
-            msg.voice = this.getVoice
-            msg.rate = 1
-            msg.pitch = 1
+                msg.voice = this.getVoice
+                msg.rate = 1
+                msg.pitch = 1
 
-            this.synth.speak(msg)
+                this.synth.speak(msg)
+            }
         },
     }
 }

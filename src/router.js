@@ -6,6 +6,7 @@ import store from '@/store'
 import Home from '@/components/Home'
 import UserData from '@/components/pages/account/UserData'
 import ChangePassword from '@/components/pages/account/ChangePassword'
+import Settings from '@/components/pages/account/Settings'
 import Courses from '@/components/pages/courses/Courses'
 import CourseTopics from '@/components/pages/course/CourseTopics'
 import CourseContent from '@/components/pages/course/CourseContent'
@@ -39,6 +40,12 @@ export default new Router({
       path: '/account/password',
       name: 'ChangePassword',
       component: ChangePassword,
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/account/settings',
+      name: 'Settings',
+      component: Settings,
       beforeEnter: requireAuth
     },
     {

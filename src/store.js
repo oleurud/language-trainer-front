@@ -6,11 +6,15 @@ Vue.use(Vuex)
 let savedUser
 let savedCourses
 let savedTopics
+let savedSettings
 try {
   if (localStorage) {
     savedUser = JSON.parse(localStorage.getItem('user'))
     savedCourses = JSON.parse(localStorage.getItem('courses')) || []
     savedTopics = JSON.parse(localStorage.getItem('topics')) || []
+    savedSettings = JSON.parse(localStorage.getItem('settings')) || {
+      sound: true
+    }
   }
 } catch (error) {
   localStorage.clear()
@@ -23,7 +27,8 @@ export default new Vuex.Store({
     nextRoute: '/courses',
     courses: savedCourses,
     topics: savedTopics,
-    sentences: null
+    sentences: null,
+    settings: savedSettings
   },
   mutations: {
     setUser(state, user) {
@@ -58,6 +63,10 @@ export default new Vuex.Store({
     },
     setSentences(state, sentences) {
       state.sentences = sentences
+    },
+    setSettings(state, settings) {
+      state.settings = settings
+      localStorage.setItem('settings', JSON.stringify(settings))
     }
   },
   getters: {

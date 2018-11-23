@@ -62,13 +62,11 @@ export default {
         },
         course() {
             if(this.$route.params.course) {
-                console.log(1)
                 return this.$store.getters.getCurrentCouse(this.$route.params.course)
             }
         },
         topic() {
             if (this.$route.params.topic) {
-                console.log(2)
                 return this.$store.getters.getCurrentTopic(this.$route.params.topic)
             }
         }

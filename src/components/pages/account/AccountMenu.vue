@@ -6,6 +6,7 @@
         <ul class="list-group list-group-flush">
             <router-link to="/account/user" :class="userClass">Profile</router-link>
             <router-link to="/account/password" :class="passwordClass">Password</router-link>
+            <router-link to="/account/settings" :class="settingsClass">Settings</router-link>
         </ul>
     </div>
 </template>
@@ -27,7 +28,7 @@ export default {
             required: true,
             default: 'user',
             validator: function(value) {
-                return value == 'user' || value == 'password'
+                return value == 'user' || value == 'password' || value == 'settings'
             }
         },
     },
@@ -35,9 +36,11 @@ export default {
         userClass() {
             return getListGroupClass(this.active == 'user')
         },
-
         passwordClass() {
             return getListGroupClass(this.active == 'password')
+        },
+        settingsClass() {
+            return getListGroupClass(this.active == 'settings')
         }
     }
 }
