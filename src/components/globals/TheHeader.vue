@@ -9,8 +9,11 @@
 
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active" v-if="user">
-                            <router-link class="nav-link" to="/courses">Courses</router-link>
+                        <li class="nav-item">
+                            <router-link class="nav-link" :to="{ name: 'Courses'}">Courses</router-link>
+                        </li>
+                        <li class="nav-item" v-if="course && topic">
+                            <router-link class="nav-link" :to="{ name: 'CourseTopics', params: {course: course.slug}}">Topics</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-if="user">
@@ -56,6 +59,18 @@ export default {
     computed: {
         user() {
             return this.$store.state.user
+        },
+        course() {
+            if(this.$route.params.course) {
+                console.log(1)
+                return this.$store.getters.getCurrentCouse(this.$route.params.course)
+            }
+        },
+        topic() {
+            if (this.$route.params.topic) {
+                console.log(2)
+                return this.$store.getters.getCurrentTopic(this.$route.params.topic)
+            }
         }
     },
     methods: {
