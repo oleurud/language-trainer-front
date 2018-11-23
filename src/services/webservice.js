@@ -4,9 +4,11 @@ import axios from 'axios'
 import router from '@/router'
 import store from '@/store'
 import getDeviceInfo from './deviceInfo'
+import parameters from '../../config/parameters'
 
+const { host, port } = parameters.backend
 const config = {
-    baseURL: 'http://localhost:8000',
+    baseURL: `${host}:${port}`,
     timeout: 10000,
     headers: {
         'X-device': getDeviceInfo()
@@ -23,16 +25,16 @@ export default {
 
         const instance = axios.create(config)
 
-        return new Promise( (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             instance[method.toLowerCase()](endpoint, params)
                 .then((response) => {
                     resolve(response.data.data)
                 })
                 .catch((error) => {
-                    if(!error.response) {
+                    if (!error.response) {
                         reject(error.message)
                     } else {
-                        if(AUTH_FAILED_CODES.indexOf(error.response.data.error.code) > -1) {
+                        if (AUTH_FAILED_CODES.indexOf(error.response.data.error.code) > -1) {
                             this.handleAuthFailed()
                             resolve()
                         } else {
