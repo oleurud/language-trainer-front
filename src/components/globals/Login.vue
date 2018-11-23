@@ -21,7 +21,7 @@
 
                         <Alert type="danger" :message="errorMessage" v-if="error"></Alert>
 
-                        <button type="submit" class="btn btn-primary" v-on:click="login">Login</button>
+                        <button type="submit" class="btn btn-primary" data-toggle="collapse" data-target=".navbar-collapse.show" v-on:click="login">Login</button>
                     </form>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+        <nav class="navbar navbar-collapse navbar-expand-md navbar-dark bg-primary fixed-top">
             <div class="container">
                 <router-link class="navbar-brand" to="/">Language trainer</router-link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,11 +9,16 @@
 
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <router-link class="nav-link" :to="{ name: 'Courses'}">Courses</router-link>
+                        <li class="nav-item" v-if="user">
+                            <router-link class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" :to="{ name: 'Courses'}">Courses</router-link>
                         </li>
-                        <li class="nav-item" v-if="course && topic">
-                            <router-link class="nav-link" :to="{ name: 'CourseTopics', params: {course: course.slug}}">Topics</router-link>
+                        <li class="nav-item" v-if="user && course && topic">
+                            <router-link
+                                class="nav-link"
+                                data-toggle="collapse" data-target=".navbar-collapse.show"
+                                :to="{ name: 'CourseTopics', params: {course: course.slug}}">
+                                Topics
+                            </router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-if="user">
@@ -22,9 +27,9 @@
                                 {{user.username}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <router-link class="dropdown-item" to="/account/user">Account</router-link>
+                                <router-link class="dropdown-item" to="/account/user" data-toggle="collapse" data-target=".navbar-collapse.show">Account</router-link>
                                 <li class="dropdown-divider"></li>
-                                <a class="dropdown-item" v-on:click="logout">Logout</a>
+                                <a class="dropdown-item" v-on:click="logout" data-toggle="collapse" data-target=".navbar-collapse.show">Logout</a>
                             </div>
                         </li>
                     </ul>
