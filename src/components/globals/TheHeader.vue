@@ -27,10 +27,10 @@
                     </ul>
                     <ul class="navbar-nav" v-else>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="modal" data-target="#login">Login</a>
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="modal" data-target="#signUp">Sign up</a>
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#signUp">Sign up</a>
                         </li>
                     </ul>
                 </div>
