@@ -60,7 +60,12 @@ export default new Vuex.Store({
       state.sentences = sentences
     }
   },
-  actions: {
-
+  getters: {
+    getCurrentCouse: state => courseSlug => {
+      return state.courses.find(c => c.slug == courseSlug)
+    },
+    getCurrentTopic: state => topicSlug => {
+      return state.topics.find(t => t.slug == topicSlug)
+    }
   }
 })

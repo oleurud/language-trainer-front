@@ -1,12 +1,9 @@
 <template>
     <div>
+        <Breadcrumb></Breadcrumb>
+
         <div class="row" v-for="sentence in sentences" :key="sentence.id">
-            <div class="col-sm-6">
-                <Sentence :sentence="sentence.source" lang="es-ES"></Sentence>
-            </div>
-            <div class="col-sm-6">
-                <Sentence :sentence="sentence.translation" lang="en-US" :hideText="true"></Sentence>
-            </div>
+            <Sentence :sentence="sentence"></Sentence>
         </div>
     </div>
 </template>
@@ -14,6 +11,7 @@
 <script>
 import ws from '@/services/webservice'
 import Sentence from './Sentence'
+import Breadcrumb from './Breadcrumb'
 
 export default {
     name: 'courseContent',
@@ -39,7 +37,8 @@ export default {
         }
     },
     components: {
-        Sentence
+        Sentence,
+        Breadcrumb
     }
 }
 </script>

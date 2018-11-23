@@ -1,14 +1,19 @@
 <template>
-    <div class="card">
-        <div class="card-body">
-            <div class="card-header">
-                <p v-if="mustShow" class="card-title">{{sentence}}</p>
-                <button class="btn btn-success" v-else @click="show">Show</button>
-            </div>
-            <div class="card-body">
-                <button class="btn btn-primary" @click="speak">Listen</button>
-            </div>
+    <div class="col-md-12">
+        <div class="card" @click="doAction">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-white bg-primary" :style="{ fontSize: '20px', textAlign: 'center' }">
+                    {{sentence.source}}
+                </li>
+                <li class="list-group-item" v-if="mustShow" :style="{ fontSize: '20px', textAlign: 'center' }">
+                    {{sentence.translation}}
+                </li>
+                <li class="list-group-item" v-else>
+                    <br>
+                </li>
+            </ul>
         </div>
+        <br><br>
     </div>
 </template>
 
@@ -19,39 +24,32 @@ export default {
     data() {
         return {
             synth: window.speechSynthesis,
-            showText: false
+            showingText: false
         }
     },
     props: {
         sentence: {
-            type: String,
-            required: true
-        },
-        lang: {
-            type: String,
-            required: true
-        },
-        hideText: {
-            type: Boolean,
-            default: false
+            type: Object
         }
     },
     computed: {
         getVoice() {
             const voices = this.synth.getVoices()
-            return voices.find(v => v.lang == this.lang)
+            return voices.find(v => v.lang == "en-US")
         },
         mustShow() {
-            if(!this.hideText || this.hideText && this.showText) {
-                return true
-            }
-
-            return false;
+            return this.showingText
         }
     },
     methods: {
+        doAction() {
+            if(!this.showingText) {
+                this.showingText = true
+            }
+            this.speak()
+        },
         speak() {
-            const msg = new SpeechSynthesisUtterance(this.sentence)
+            const msg = new SpeechSynthesisUtterance(this.sentence.translation)
 
             msg.voice = this.getVoice
             msg.rate = 1
@@ -59,9 +57,6 @@ export default {
 
             this.synth.speak(msg)
         },
-        show() {
-            this.showText = true
-        }
     }
 }
 </script>

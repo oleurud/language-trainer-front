@@ -7,7 +7,8 @@ import Home from '@/components/Home'
 import UserData from '@/components/pages/account/UserData'
 import ChangePassword from '@/components/pages/account/ChangePassword'
 import Courses from '@/components/pages/courses/Courses'
-import Course from '@/components/pages/course/Course'
+import CourseTopics from '@/components/pages/course/CourseTopics'
+import CourseContent from '@/components/pages/course/CourseContent'
 
 Vue.use(Router)
 
@@ -48,14 +49,14 @@ export default new Router({
     },
     {
       path: '/course/:course',
-      name: 'Course',
-      component: Course,
+      name: 'CourseTopics',
+      component: CourseTopics,
       beforeEnter: requireAuth
     },
     {
       path: '/course/:course/topic/:topic',
       name: 'CourseContent',
-      component: Course,
+      component: CourseContent,
       beforeEnter: requireAuth
     },
   ]

@@ -1,25 +1,18 @@
 <template>
     <div v-if="courses">
-        <div class="row">
-            <div class="col-lg-12">
-                <h4>Courses</h4>
-            </div>
-        </div>
-
-        <hr>
+        <p><strong>Select a course:</strong></p>
 
         <div class="row" v-if="courses && courses.length">
-            <div class="col-lg-3" v-for="course in courses" :key="course.slug">
-                <div class="card">
-                    <router-link :to="{ name: 'Course', params: {course: course.slug}}">
-                        <img class="card-img-top" src="" alt="">
+            <div class="col-lg-6" v-for="course in courses" :key="course.slug">
+                <router-link :to="{ name: 'CourseTopics', params: {course: course.slug}}">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">Course</div>
                         <div class="card-body">
-                            <p class="card-text">
-                                {{course.name}}
-                            </p>
+                            <h5 class="card-title">{{course.name}}</h5>
                         </div>
-                    </router-link>
-                </div>
+                    </div>
+                </router-link>
+                <br>
             </div>
         </div>
         <p v-else>You don't have courses</p>
