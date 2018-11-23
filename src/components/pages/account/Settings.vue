@@ -1,22 +1,21 @@
 <template>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-lg-3">
             <AccountMenu active="settings"></AccountMenu>
             <br>
         </div>
-        <div class="col-sm-10">
+        <div class="col-lg-9">
             <h4>Sound</h4>
             <hr>
             <form>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Sound active</label>
-                    <div class="col-sm-10">
-                        <input class="form-check-input" type="checkbox" id="sound" checked v-if="settings.sound">
-                        <input class="form-check-input" type="checkbox" id="sound" v-else>
-                    </div>
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" id="sound" checked v-if="settings.sound">
+                    <input class="form-check-input" type="checkbox" id="sound" v-else>
+                    <label class="form-check-label">Sound active</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" v-on:click="saveChanges">Save changes</button>
+                <br>
+                <button type="submit" class="btn btn-primary" v-on:click="saveChanges">Save settings</button>
             </form>
         </div>
     </div>

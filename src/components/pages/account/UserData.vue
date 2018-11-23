@@ -1,34 +1,34 @@
 <template>
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <AccountMenu active="user"></AccountMenu>
             <br>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-9">
             <h4>Profile</h4>
             <hr>
             <form>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
+                    <label class="col-lg-3 col-form-label">Username</label>
+                    <div class="col-lg-9">
                         <input type="text" class="form-control-plaintext" v-model="user.username" readonly>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
+                    <label class="col-lg-3 col-form-label">Email</label>
+                    <div class="col-lg-9">
                         <input type="text" class="form-control-plaintext" v-model="user.email" readonly>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-10">
+                    <label class="col-lg-3 col-form-label">Name</label>
+                    <div class="col-lg-9">
                         <input type="text" class="form-control" id="name" v-model="user.profile.name">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Last name</label>
-                    <div class="col-sm-10">
+                    <label class="col-lg-3 col-form-label">Last name</label>
+                    <div class="col-lg-9">
                         <input type="text" class="form-control" id="lastname" v-model="user.profile.lastname">
                     </div>
                 </div>

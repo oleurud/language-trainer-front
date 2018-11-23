@@ -1,23 +1,23 @@
 <template>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-lg-3">
             <AccountMenu active="password"></AccountMenu>
             <br>
         </div>
-        <div class="col-sm-10">
+        <div class="col-lg-9">
             <h4>Change password</h4>
             <hr>
             <p>All your sessions (except the current one) will be closed after changing your password.</p>
             <form>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Current password</label>
-                    <div class="col-sm-10">
+                    <label class="col-lg-3 col-form-label">Current password</label>
+                    <div class="col-lg-9">
                         <input type="password" class="form-control" id="currentPassword" value="">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">New password</label>
-                    <div class="col-sm-10">
+                    <label class="col-lg-3 col-form-label">New password</label>
+                    <div class="col-lg-9">
                         <input type="password" class="form-control" id="newPassword" value="">
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-12">
+    <div class="col-lg-12">
         <div class="card" @click="doAction">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-white bg-primary" :style="{ fontSize: '20px', textAlign: 'center' }">
