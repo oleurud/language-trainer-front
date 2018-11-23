@@ -3,7 +3,12 @@
         <mainNav></mainNav>
         <div class="container">
             <router-view></router-view>
+            <footer>
+                <hr>
+                <p>If you see something wrong, <a href="https://github.com/oleurud/language-trainer/issues/new">create an issue</a></p>
+            </footer>
         </div>
+
     </div>
 </template>
 
@@ -25,5 +30,9 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     color: #343a40;
     margin-top: 90px;
+}
+
+footer {
+    margin-top: 80px
 }
 </style>
