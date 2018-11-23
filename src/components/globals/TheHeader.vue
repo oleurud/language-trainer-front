@@ -32,13 +32,13 @@
                                 <a class="dropdown-item" v-on:click="logout" data-toggle="collapse" data-target=".navbar-collapse.show">Logout</a>
                             </div>
                         </li>
+                        <li class="nav-item" v-if="userIsSuperadmin">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#signUp">New user</a>
+                        </li>
                     </ul>
                     <ul class="navbar-nav" v-else>
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#signUp">Sign up</a>
                         </li>
                     </ul>
                 </div>
@@ -64,6 +64,9 @@ export default {
     computed: {
         user() {
             return this.$store.state.user
+        },
+        userIsSuperadmin() {
+            return this.$store.state.user && this.$store.state.user.role === 'SuperAdmin'
         },
         course() {
             if(this.$route.params.course) {
